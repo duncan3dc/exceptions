@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.0
+
+env:
+  - COMPOSER_OPTS=""
+  - COMPOSER_OPTS="--prefer-lowest"
+
+install:
+  - composer self-update --snapshot
+  - composer update $COMPOSER_OPTS
+
+script:
+  - ./vendor/bin/phpunit
+  - ./tests/lint.sh
+
+git:
+  depth: 5
