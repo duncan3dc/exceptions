@@ -99,4 +99,14 @@ class CatcherTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(\Exception::class, "Nope");
         unset($this->catcher);
     }
+
+
+    public function testCallableParameters()
+    {
+        $result = $this->catcher->try(function ($arg1, $arg2) {
+            return "{$arg1}_{$arg2}";
+        }, "one", "two");
+
+        $this->assertSame("one_two", $result);
+    }
 }
