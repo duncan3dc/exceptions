@@ -3,8 +3,9 @@
 namespace duncan3dc\ExceptionsTests;
 
 use duncan3dc\Exceptions\Catcher;
+use PHPUnit\Framework\TestCase;
 
-class CatcherTest extends \PHPUnit_Framework_TestCase
+class CatcherTest extends TestCase
 {
     private $catcher;
 
@@ -34,7 +35,8 @@ class CatcherTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($result);
 
-        $this->setExpectedException(\Exception::class, "Fail1");
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage("Fail1");
         $this->catcher->throw();
     }
 
@@ -85,7 +87,8 @@ class CatcherTest extends \PHPUnit_Framework_TestCase
         });
 
         $this->expectOutputRegex("/^Exception: Fail1 in /");
-        $this->setExpectedException(\Exception::class, "Fail2");
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage("Fail2");
         $this->catcher->throw();
     }
 
@@ -96,7 +99,8 @@ class CatcherTest extends \PHPUnit_Framework_TestCase
             throw new \Exception("Nope");
         });
 
-        $this->setExpectedException(\Exception::class, "Nope");
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage("Nope");
         unset($this->catcher);
     }
 
