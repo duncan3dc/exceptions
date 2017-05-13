@@ -3,6 +3,7 @@
 namespace duncan3dc\ExceptionsTests;
 
 use duncan3dc\Exceptions\Catcher;
+use duncan3dc\Exceptions\Exceptions;
 use PHPUnit\Framework\TestCase;
 
 class CatcherTest extends TestCase
@@ -25,7 +26,7 @@ class CatcherTest extends TestCase
     public function testSecondCodeRuns()
     {
         $this->catcher->try(function () {
-            throw new \Exception("Fail1");
+            throw new \Exception("First Fail");
         });
 
         $result = false;
@@ -36,7 +37,7 @@ class CatcherTest extends TestCase
         $this->assertTrue($result);
 
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Fail1");
+        $this->expectExceptionMessage("First Fail");
         $this->catcher->throw();
     }
 
@@ -80,15 +81,15 @@ class CatcherTest extends TestCase
     public function testMultipleExceptions()
     {
         $this->catcher->try(function () {
-            throw new \Exception("Fail1");
+            throw new \UnexpectedValueException("Multiple1");
         });
         $this->catcher->try(function () {
-            throw new \Exception("Fail2");
+            throw new \InvalidArgumentException("Multiple2");
         });
 
-        $this->expectOutputRegex("/^Exception: Fail1 in /");
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Fail2");
+        $this->expectOutputRegex("/^UnexpectedValueException: Multiple1 in /");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Multiple2");
         $this->catcher->throw();
     }
 
