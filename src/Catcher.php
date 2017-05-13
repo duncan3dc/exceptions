@@ -24,8 +24,6 @@ class Catcher
     {
         try {
             return $code(...$params);
-        } catch (\Exception $e) {
-            $this->exceptions[] = $e;
         } catch (\Throwable $e) {
             $this->exceptions[] = $e;
         }
