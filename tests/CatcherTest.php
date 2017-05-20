@@ -87,9 +87,7 @@ class CatcherTest extends TestCase
             throw new \InvalidArgumentException("Multiple2");
         });
 
-        $this->expectOutputRegex("/^UnexpectedValueException: Multiple1 in /");
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("Multiple2");
+        $this->expectException(Exceptions::class);
         $this->catcher->throw();
     }
 

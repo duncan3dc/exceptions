@@ -59,18 +59,19 @@ class Catcher
      */
     public function throw()
     {
-        if (count($this->exceptions) < 1) {
+        # Ensure the exceptions are only thrown once
+        $exceptions = $this->exceptions;
+        $this->clear();
+
+        if (count($exceptions) < 1) {
             return;
         }
 
-        $finalException = array_pop($this->exceptions);
-
-        foreach ($this->exceptions as $key => $e) {
-            echo $e->__toString();
-            unset($this->exceptions[$key]);
+        if (count($exceptions) === 1) {
+            throw $exceptions[0];
         }
 
-        throw $finalException;
+        throw new Exceptions($exceptions);
     }
 
 
