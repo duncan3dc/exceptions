@@ -3,7 +3,9 @@
 namespace duncan3dc\ExceptionsTests;
 
 use duncan3dc\Exceptions\Catcher;
+use duncan3dc\Exceptions\ExceptionFactoryInterface;
 use duncan3dc\Exceptions\Exceptions;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class CatcherTest extends TestCase
@@ -13,6 +15,31 @@ class CatcherTest extends TestCase
     public function setUp()
     {
         $this->catcher = new Catcher;
+    }
+
+
+    public function tearDown()
+    {
+        Mockery::close();
+    }
+
+
+    public function testConstructor()
+    {
+        $factory = Mockery::mock(ExceptionFactoryInterface::class);
+        $factory->shouldReceive("make")->once()->andReturn(new \OutOfBoundsException);
+
+        $catcher = new Catcher($factory);
+
+        $catcher->try(function () {
+            throw new \Exception("Constructor1");
+        });
+        $catcher->try(function () {
+            throw new \Exception("Constructor2");
+        });
+
+        $this->expectException(\OutOfBoundsException::class);
+        $catcher->throw();
     }
 
 

@@ -9,6 +9,24 @@ class Catcher
      */
     private $exceptions = [];
 
+    /**
+     * @param ExceptionFactoryInterface $factory A factory for creating exceptions.
+     */
+    private $factory;
+
+
+    /**
+     * Create a new instance.
+     */
+    public function __construct(ExceptionFactoryInterface $factory = null)
+    {
+        if ($factory === null) {
+            $factory = new ExceptionFactory;
+        }
+
+        $this->factory = $factory;
+    }
+
 
     /**
      * Run some code and catch any exceptions thrown.
@@ -71,7 +89,7 @@ class Catcher
             throw $exceptions[0];
         }
 
-        throw new Exceptions($exceptions);
+        throw $this->factory->make($exceptions);
     }
 
 
