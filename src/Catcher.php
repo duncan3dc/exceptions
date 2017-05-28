@@ -14,6 +14,11 @@ class Catcher
      */
     private $factory;
 
+    /**
+     * @param string[] $catch An array of exception types to catch.
+     */
+    private $catch = [];
+
 
     /**
      * Create a new instance.
@@ -25,6 +30,30 @@ class Catcher
         }
 
         $this->factory = $factory;
+    }
+
+
+    /**
+     * Add an exception type to catch.
+     *
+     * @param string $class The exception class to catch
+     *
+     * @return void
+     */
+    public function catch(string $class)
+    {
+        $this->catch[] = $class;
+    }
+
+
+    /**
+     * Catch any type of exception.
+     *
+     * @return void
+     */
+    public function catchAll()
+    {
+        $this->catch = [];
     }
 
 
@@ -43,8 +72,35 @@ class Catcher
         try {
             return $code(...$params);
         } catch (\Throwable $e) {
-            $this->exceptions[] = $e;
+            if ($this->shouldCatch($e)) {
+                $this->exceptions[] = $e;
+            } else {
+                throw $e;
+            }
         }
+    }
+
+
+    /**
+     * Check if the passed exception should be caught or not.
+     *
+     * @param \Throwable $e The exception to check
+     *
+     * @return bool
+     */
+    private function shouldCatch(\Throwable $e): bool
+    {
+        if (count($this->catch) === 0) {
+            return true;
+        }
+
+        foreach ($this->catch as $catch) {
+            if ($e instanceof $catch) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
