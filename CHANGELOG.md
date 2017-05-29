@@ -5,6 +5,15 @@ Changelog
 
 --------
 
+## 1.0.0 - 2017-05-29
+
+### Added
+
+* [ExceptionFactory] Created a class to handle formatting the exceptions.
+* [Catcher] Allow specific exception types to be caught.
+
+--------
+
 ## 0.2.0 - 2016-08-22
 
 ### Added
