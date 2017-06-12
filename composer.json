@@ -20,9 +20,9 @@
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
-        "psr-4": {
-            "duncan3dc\\Exceptions\\": "src/",
-            "duncan3dc\\ExceptionsTests\\": "tests/"
-        }
+        "psr-4": {"duncan3dc\\Exceptions\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"duncan3dc\\ExceptionsTests\\": "tests/"}
     }
 }
