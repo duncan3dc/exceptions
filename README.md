@@ -4,9 +4,9 @@ A small PHP library to catch exceptions and throw them all together later.
 Full documentation is available at http://duncan3dc.github.io/exceptions/  
 PHPDoc API documentation is also available at [http://duncan3dc.github.io/exceptions/api/](http://duncan3dc.github.io/exceptions/api/namespaces/duncan3dc.Exceptions.html)  
 
-[![Build Status](https://img.shields.io/travis/duncan3dc/exceptions.svg)](https://travis-ci.org/duncan3dc/exceptions)
-[![Latest Version](https://img.shields.io/packagist/v/duncan3dc/exceptions.svg)](https://packagist.org/packages/duncan3dc/exceptions)
-
+[![Latest Stable Version](https://poser.pugx.org/duncan3dc/exceptions/version.svg)](https://packagist.org/packages/duncan3dc/exceptions)
+[![Build Status](https://travis-ci.org/duncan3dc/exceptions.svg?branch=master)](https://travis-ci.org/duncan3dc/exceptions)
+[![Coverage Status](https://coveralls.io/repos/github/duncan3dc/exceptions/badge.svg)](https://coveralls.io/github/duncan3dc/exceptions)
 
 ## Installation
 
