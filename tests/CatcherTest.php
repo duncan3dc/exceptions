@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class CatcherTest extends TestCase
 {
+    /**
+     * @var Catcher $catcher The instance we are testing.
+     */
     private $catcher;
 
     public function setUp()

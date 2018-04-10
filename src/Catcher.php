@@ -2,6 +2,8 @@
 
 namespace duncan3dc\Exceptions;
 
+use function count;
+
 class Catcher
 {
     /**
