@@ -42,7 +42,7 @@ class Catcher
      *
      * @return void
      */
-    public function catch(string $class)
+    public function catch(string $class): void
     {
         $this->catch[] = $class;
     }
@@ -53,7 +53,7 @@ class Catcher
      *
      * @return void
      */
-    public function catchAll()
+    public function catchAll(): void
     {
         $this->catch = [];
     }
@@ -111,7 +111,7 @@ class Catcher
      *
      * @return \Throwable[]
      */
-    public function getExceptions()
+    public function getExceptions(): array
     {
         return $this->exceptions;
     }
@@ -122,7 +122,7 @@ class Catcher
      *
      * @return void
      */
-    public function clear()
+    public function clear(): void
     {
         $this->exceptions = [];
     }
@@ -133,7 +133,7 @@ class Catcher
      *
      * @return void
      */
-    public function throw()
+    public function throw(): void
     {
         # Ensure the exceptions are only thrown once
         $exceptions = $this->exceptions;
