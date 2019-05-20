@@ -28,5 +28,15 @@
     },
     "autoload-dev": {
         "psr-4": {"duncan3dc\\ExceptionsTests\\": "tests/"}
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit",
+            "vendor/bin/phpstan analyse --level=max src",
+            "vendor/bin/phpstan analyse --level=max --configuration=phpstan-tests.neon tests",
+            "vendor/bin/phpcs",
+            "vendor/bin/composer-require-checker",
+            "@composer validate --strict"
+        ]
     }
 }
