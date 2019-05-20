@@ -65,7 +65,7 @@ class Catcher
      * The exception will be stored to be thrown later.
      *
      * @param callable $code The code to be run
-     * @param mixed $parameters The parameters to be passed
+     * @param mixed ...$params The parameters to be passed
      *
      * @return mixed The return value of the callable is passed back, or null if an exception was thrown
      */

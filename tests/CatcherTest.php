@@ -49,8 +49,8 @@ class CatcherTest extends TestCase
 
     public function testNoExceptions()
     {
-        $result = $this->catcher->throw();
-        $this->assertNull($result);
+        $this->catcher->throw();
+        $this->assertTrue(true);
     }
 
 

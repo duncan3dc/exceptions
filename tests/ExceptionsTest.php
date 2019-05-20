@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ExceptionsTest extends TestCase
 {
-    private $catcher;
+
 
     public function testOneException()
     {
