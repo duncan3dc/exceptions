@@ -14,7 +14,7 @@ class ExceptionsTest extends TestCase
         $exceptions = new Exceptions([
             new \InvalidArgumentException("Number 1"),
         ]);
-        $this->assertContains("InvalidArgumentException: Number 1", $exceptions->__toString());
+        $this->assertStringContainsString("InvalidArgumentException: Number 1", $exceptions->__toString());
     }
 
 
@@ -24,7 +24,7 @@ class ExceptionsTest extends TestCase
             new \InvalidArgumentException("Number 1"),
             new \UnexpectedValueException("Number 2"),
         ]);
-        $this->assertContains("InvalidArgumentException: Number 1", $exceptions->__toString());
-        $this->assertContains("UnexpectedValueException: Number 2", $exceptions->__toString());
+        $this->assertStringContainsString("InvalidArgumentException: Number 1", $exceptions->__toString());
+        $this->assertStringContainsString("UnexpectedValueException: Number 2", $exceptions->__toString());
     }
 }

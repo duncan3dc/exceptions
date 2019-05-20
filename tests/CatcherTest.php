@@ -16,13 +16,13 @@ class CatcherTest extends TestCase
      */
     private $catcher;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->catcher = new Catcher;
     }
 
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
