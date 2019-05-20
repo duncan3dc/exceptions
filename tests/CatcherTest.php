@@ -18,7 +18,7 @@ class CatcherTest extends TestCase
 
     public function setUp(): void
     {
-        $this->catcher = new Catcher;
+        $this->catcher = new Catcher();
     }
 
 
@@ -31,7 +31,7 @@ class CatcherTest extends TestCase
     public function testConstructor()
     {
         $factory = Mockery::mock(ExceptionFactoryInterface::class);
-        $factory->shouldReceive("make")->once()->andReturn(new \OutOfBoundsException);
+        $factory->shouldReceive("make")->once()->andReturn(new \OutOfBoundsException());
 
         $catcher = new Catcher($factory);
 
@@ -149,7 +149,7 @@ class CatcherTest extends TestCase
     {
         $catcher = new Intruder($this->catcher);
 
-        $result = $catcher->shouldCatch(new \Exception);
+        $result = $catcher->shouldCatch(new \Exception());
 
         $this->assertTrue($result);
     }
@@ -158,7 +158,7 @@ class CatcherTest extends TestCase
         $catcher = new Intruder($this->catcher);
 
         $catcher->catch(\InvalidArgumentException::class);
-        $result = $catcher->shouldCatch(new \Exception);
+        $result = $catcher->shouldCatch(new \Exception());
 
         $this->assertFalse($result);
     }
@@ -167,7 +167,7 @@ class CatcherTest extends TestCase
         $catcher = new Intruder($this->catcher);
 
         $catcher->catch(\InvalidArgumentException::class);
-        $result = $catcher->shouldCatch(new \InvalidArgumentException);
+        $result = $catcher->shouldCatch(new \InvalidArgumentException());
 
         $this->assertTrue($result);
     }
@@ -176,7 +176,7 @@ class CatcherTest extends TestCase
         $catcher = new Intruder($this->catcher);
 
         $catcher->catch(\Exception::class);
-        $result = $catcher->shouldCatch(new \InvalidArgumentException);
+        $result = $catcher->shouldCatch(new \InvalidArgumentException());
 
         $this->assertTrue($result);
     }
@@ -186,7 +186,7 @@ class CatcherTest extends TestCase
 
         $catcher->catch(\InvalidArgumentException::class);
         $catcher->catch(\UnexpectedValueException::class);
-        $result = $catcher->shouldCatch(new \UnexpectedValueException);
+        $result = $catcher->shouldCatch(new \UnexpectedValueException());
 
         $this->assertTrue($result);
     }
@@ -196,7 +196,7 @@ class CatcherTest extends TestCase
 
         $catcher->catch(\UnexpectedValueException::class);
         $catcher->catch(\InvalidArgumentException::class);
-        $result = $catcher->shouldCatch(new \UnexpectedValueException);
+        $result = $catcher->shouldCatch(new \UnexpectedValueException());
 
         $this->assertTrue($result);
     }
@@ -222,7 +222,7 @@ class CatcherTest extends TestCase
 
         $catcher->catch(\InvalidArgumentException::class);
         $catcher->catchAll();
-        $result = $catcher->shouldCatch(new \UnexpectedValueException);
+        $result = $catcher->shouldCatch(new \UnexpectedValueException());
 
         $this->assertTrue($result);
     }

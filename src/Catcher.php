@@ -28,7 +28,7 @@ class Catcher
     public function __construct(ExceptionFactoryInterface $factory = null)
     {
         if ($factory === null) {
-            $factory = new ExceptionFactory;
+            $factory = new ExceptionFactory();
         }
 
         $this->factory = $factory;
