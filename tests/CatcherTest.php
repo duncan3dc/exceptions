@@ -28,7 +28,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $factory = Mockery::mock(ExceptionFactoryInterface::class);
         $factory->shouldReceive("make")->once()->andReturn(new \OutOfBoundsException());
@@ -47,14 +47,14 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testNoExceptions()
+    public function testNoExceptions(): void
     {
         $this->catcher->throw();
         $this->assertTrue(true);
     }
 
 
-    public function testSecondCodeRuns()
+    public function testSecondCodeRuns(): void
     {
         $this->catcher->try(function () {
             throw new \Exception("First Fail");
@@ -73,7 +73,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testGetExceptions()
+    public function testGetExceptions(): void
     {
         $exceptions = [
             new \Exception("Fail1"),
@@ -93,7 +93,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testClear()
+    public function testClear(): void
     {
         $exception = new \Exception("Nope");
 
@@ -109,7 +109,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testMultipleExceptions()
+    public function testMultipleExceptions(): void
     {
         $this->catcher->try(function () {
             throw new \UnexpectedValueException("Multiple1");
@@ -123,7 +123,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testDestruct()
+    public function testDestruct(): void
     {
         $this->catcher->try(function () {
             throw new \Exception("Nope");
@@ -135,7 +135,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testCallableParameters()
+    public function testCallableParameters(): void
     {
         $result = $this->catcher->try(function ($arg1, $arg2) {
             return "{$arg1}_{$arg2}";
@@ -145,7 +145,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testShouldCatch1()
+    public function testShouldCatch1(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -153,7 +153,7 @@ class CatcherTest extends TestCase
 
         $this->assertTrue($result);
     }
-    public function testShouldCatch2()
+    public function testShouldCatch2(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -162,7 +162,7 @@ class CatcherTest extends TestCase
 
         $this->assertFalse($result);
     }
-    public function testShouldCatch3()
+    public function testShouldCatch3(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -171,7 +171,7 @@ class CatcherTest extends TestCase
 
         $this->assertTrue($result);
     }
-    public function testShouldCatch4()
+    public function testShouldCatch4(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -180,7 +180,7 @@ class CatcherTest extends TestCase
 
         $this->assertTrue($result);
     }
-    public function testShouldCatch5()
+    public function testShouldCatch5(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -190,7 +190,7 @@ class CatcherTest extends TestCase
 
         $this->assertTrue($result);
     }
-    public function testShouldCatch6()
+    public function testShouldCatch6(): void
     {
         $catcher = new Intruder($this->catcher);
 
@@ -202,7 +202,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testCatch()
+    public function testCatch(): void
     {
         $this->catcher->catch(\InvalidArgumentException::class);
 
@@ -216,7 +216,7 @@ class CatcherTest extends TestCase
     }
 
 
-    public function testCatchAll()
+    public function testCatchAll(): void
     {
         $catcher = new Intruder($this->catcher);
 

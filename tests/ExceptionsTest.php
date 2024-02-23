@@ -7,9 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ExceptionsTest extends TestCase
 {
-
-
-    public function testOneException()
+    public function testOneException(): void
     {
         $exceptions = new Exceptions([
             new \InvalidArgumentException("Number 1"),
@@ -18,7 +16,7 @@ class ExceptionsTest extends TestCase
     }
 
 
-    public function testTwoExceptions()
+    public function testTwoExceptions(): void
     {
         $exceptions = new Exceptions([
             new \InvalidArgumentException("Number 1"),

@@ -7,15 +7,13 @@ use function get_class;
 class Exceptions extends \Exception
 {
     /**
-     * @param \Throwable[] $exceptions An array of caught exceptions.
+     * @var array<\Throwable> $exceptions An array of caught exceptions.
      */
     private $exceptions = [];
 
 
     /**
-     * Create a new instance.
-     *
-     * @param \Throwable[] $exceptions An array of caught exceptions.
+     * @param array<\Throwable> $exceptions An array of caught exceptions.
      */
     public function __construct(array $exceptions)
     {
@@ -26,8 +24,6 @@ class Exceptions extends \Exception
 
     /**
      * Format the exceptions.
-     *
-     * @return string
      */
     public function __toString(): string
     {

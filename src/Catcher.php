@@ -7,24 +7,21 @@ use function count;
 class Catcher
 {
     /**
-     * @param \Throwable[] $exceptions An array of caught exceptions.
+     * @var array<\Throwable> $exceptions An array of caught exceptions.
      */
     private $exceptions = [];
 
     /**
-     * @param ExceptionFactoryInterface $factory A factory for creating exceptions.
+     * @var ExceptionFactoryInterface $factory A factory for creating exceptions.
      */
     private $factory;
 
     /**
-     * @param string[] $catch An array of exception types to catch.
+     * @var array<string> $catch An array of exception types to catch.
      */
     private $catch = [];
 
 
-    /**
-     * Create a new instance.
-     */
     public function __construct(ExceptionFactoryInterface $factory = null)
     {
         if ($factory === null) {
@@ -39,8 +36,6 @@ class Catcher
      * Add an exception type to catch.
      *
      * @param string $class The exception class to catch
-     *
-     * @return void
      */
     public function catch(string $class): void
     {
@@ -50,8 +45,6 @@ class Catcher
 
     /**
      * Catch any type of exception.
-     *
-     * @return void
      */
     public function catchAll(): void
     {
@@ -85,10 +78,6 @@ class Catcher
 
     /**
      * Check if the passed exception should be caught or not.
-     *
-     * @param \Throwable $e The exception to check
-     *
-     * @return bool
      */
     private function shouldCatch(\Throwable $e): bool
     {
@@ -109,7 +98,7 @@ class Catcher
     /**
      * Get any caught exceptions.
      *
-     * @return \Throwable[]
+     * @return array<\Throwable>
      */
     public function getExceptions(): array
     {
@@ -119,8 +108,6 @@ class Catcher
 
     /**
      * Discard any caught exceptions.
-     *
-     * @return void
      */
     public function clear(): void
     {
@@ -130,8 +117,6 @@ class Catcher
 
     /**
      * Throw any caught exceptions.
-     *
-     * @return void
      */
     public function throw(): void
     {
